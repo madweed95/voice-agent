@@ -8,7 +8,7 @@ import {
 import { cn } from "@/lib/utils";
 import { MegaMenu } from "./components/mega-menu";
 import { buttons } from "./constants";
-// import { JessicaModal } from "./components/jessica-modal";
+import { JessicaModal } from "./components/jessica-modal";
 
 export const NavMenu = () => {
   return (
@@ -35,7 +35,7 @@ export const NavMenu = () => {
             ))}
           </NavigationMenuList>
         </NavigationMenu>
-        {/* <JessicaModal /> */}
+        <JessicaModal />
       </div>
 
       <MegaMenu />

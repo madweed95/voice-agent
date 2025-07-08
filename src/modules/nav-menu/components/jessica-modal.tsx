@@ -6,7 +6,6 @@ import {
   DialogTrigger,
 } from "@/common/components/dialog";
 import phoneSvg from "../../../assets/phone.svg";
-import { Recorder } from "./recorder";
 
 export const JessicaModal = () => {
   return (
@@ -26,9 +25,7 @@ export const JessicaModal = () => {
             <img src={phoneSvg} alt="phone" className="p-1.5" />
           </DialogClose>
         </DialogHeader>
-        <div className="w-full h-full flex items-center justify-center">
-          <Recorder />
-        </div>
+        <div className="w-full h-full flex items-center justify-center"></div>
       </DialogContent>
     </Dialog>
   );
