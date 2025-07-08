@@ -1,4 +1,3 @@
-import { Button } from "@/common/components/button";
 import {
   Dialog,
   DialogClose,
@@ -7,6 +6,7 @@ import {
   DialogTrigger,
 } from "@/common/components/dialog";
 import phoneSvg from "../../../assets/phone.svg";
+import { Recorder } from "./recorder";
 
 export const JessicaModal = () => {
   return (
@@ -27,7 +27,7 @@ export const JessicaModal = () => {
           </DialogClose>
         </DialogHeader>
         <div className="w-full h-full flex items-center justify-center">
-          <Button>call</Button>
+          <Recorder />
         </div>
       </DialogContent>
     </Dialog>

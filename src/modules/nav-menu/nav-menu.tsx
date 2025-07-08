@@ -8,7 +8,7 @@ import {
 import { cn } from "@/lib/utils";
 import { MegaMenu } from "./components/mega-menu";
 import { buttons } from "./constants";
-import { JessicaModal } from "./components/jessica-modal";
+// import { JessicaModal } from "./components/jessica-modal";
 
 export const NavMenu = () => {
   return (
@@ -35,10 +35,7 @@ export const NavMenu = () => {
             ))}
           </NavigationMenuList>
         </NavigationMenu>
-        {/* <Button className="bg-[#DD86DF] text-[#1F1B20] hover:bg-[#DD86DF] font-gilroy-medium hover:shadow-xl w-full max-w-[117px] h-11 rounded-[12px]">
-          Call Jessica
-        </Button> */}
-        <JessicaModal />
+        {/* <JessicaModal /> */}
       </div>
 
       <MegaMenu />
