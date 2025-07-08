@@ -1,7 +1,7 @@
 export const Description = () => {
   return (
-    <div className="w-full mt-6 flex-col gap-6 flex justify-between font-gilroy-medium">
-      <h1 className="text-[#4F1650] text-[96px] font-gilroy-bold">
+    <div className="w-full xl:mt-6 mt-2 flex-col gap-6 flex justify-between font-gilroy-medium">
+      <h1 className="text-[#4F1650] xl:text-[96px] text-4xl font-gilroy-bold">
         Solving problems. <br />
         Thousands at a time.
       </h1>
