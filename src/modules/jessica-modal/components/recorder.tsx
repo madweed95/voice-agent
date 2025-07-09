@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useAudioRecorder } from "react-audio-voice-recorder";
 import useWebSocket from "react-use-websocket";
 import recordIcon from "@/assets/record.svg"; // Assuming you have a record icon
+import { useVoiceMessageStore } from "../store";
 
 export const Recorder = () => {
   const { sendMessage, readyState, getWebSocket, lastMessage } = useWebSocket(
@@ -16,6 +17,9 @@ export const Recorder = () => {
       },
     }
   );
+
+  const messages = useVoiceMessageStore((state) => state.messages);
+  const storeMessages = useVoiceMessageStore((state) => state.storeMessages);
 
   const {
     startRecording,
@@ -44,13 +48,14 @@ export const Recorder = () => {
 
   useEffect(() => {
     if (lastMessage?.data instanceof Blob) {
+      console.log("lastMessage", lastMessage?.data);
       const url = URL.createObjectURL(lastMessage.data);
       const audio = document.createElement("audio");
       audio.src = url;
       audio.controls = true;
       document.body.appendChild(audio);
       audio.play();
-      console.log("messageHistory", audio);
+      storeMessages(url);
     }
   }, [lastMessage]);
 
