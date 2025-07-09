@@ -7,7 +7,7 @@ import {
 import { cn } from "@/lib/utils";
 import menuSvg from "../../../assets/menu.svg";
 import { buttons } from "../constants";
-import { JessicaModal } from "./jessica-modal";
+import { JessicaModal } from "../../jessica-modal/jessica-modal";
 
 export const MegaMenu = () => {
   return (

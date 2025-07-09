@@ -6,9 +6,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/common/components/dialog";
-import phoneSvg from "../../../assets/phone.svg";
+import phoneSvg from "../../assets/phone.svg";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
-import { Recorder } from "./recorder";
+import { Recorder } from "./components/recorder";
 
 export const JessicaModal = () => {
   return (
@@ -28,7 +28,7 @@ export const JessicaModal = () => {
           <div className="font-gilroy-medium text-xs text-[#4F1650]">
             Calling Jessica
           </div>
-          <DialogClose className="rounded-full bg-[#EF7679] h-[26px]">
+          <DialogClose className="rounded-full cursor-pointer bg-[#EF7679] h-[26px]">
             <img src={phoneSvg} alt="phone" className="p-1.5" />
           </DialogClose>
         </DialogHeader>

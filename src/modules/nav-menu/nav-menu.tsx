@@ -8,7 +8,7 @@ import {
 import { cn } from "@/lib/utils";
 import { MegaMenu } from "./components/mega-menu";
 import { buttons } from "./constants";
-import { JessicaModal } from "./components/jessica-modal";
+import { JessicaModal } from "../jessica-modal/jessica-modal";
 
 export const NavMenu = () => {
   return (
