@@ -28,19 +28,19 @@ export const Recorder = () => {
     mediaRecorder,
   } = useAudioRecorder();
 
-  const addAudioElement = (blob: Blob | MediaSource | undefined) => {
-    if (!blob) return;
-    const url = URL.createObjectURL(blob);
-    const audio = document.createElement("audio");
-    audio.src = url;
-    audio.controls = true;
-    if (blob instanceof Blob) {
-      const wavBlob = new Blob([blob], { type: "audio/wav" });
-      sendMessage(wavBlob);
-    } else {
-      console.warn("Cannot send MediaSource via WebSocket.");
-    }
-  };
+  // const addAudioElement = (blob: Blob | MediaSource | undefined) => {
+  //   if (!blob) return;
+  //   const url = URL.createObjectURL(blob);
+  //   const audio = document.createElement("audio");
+  //   audio.src = url;
+  //   audio.controls = true;
+  //   if (blob instanceof Blob) {
+  //     const wavBlob = new Blob([blob], { type: "audio/wav" });
+  //     sendMessage(wavBlob);
+  //   } else {
+  //     console.warn("Cannot send MediaSource via WebSocket.");
+  //   }
+  // };
 
   useEffect(() => {
     if (lastMessage?.data instanceof Blob) {
@@ -73,11 +73,7 @@ export const Recorder = () => {
       <Button
         className="w-12 h-12 rounded-full bg-[#DD86DF] hover:bg-[#DD86DF] hover:shadow-xl"
         type="button"
-        onClick={() => {
-          stopRecording();
-
-          addAudioElement(recordingBlob);
-        }}
+        onClick={() => stopRecording()}
       >
         stop
       </Button>
@@ -88,6 +84,7 @@ export const Recorder = () => {
       >
         {isPaused ? "Resume" : "Pause"}
       </Button>
+      {recordingTime}
     </div>
   ) : (
     <Button
