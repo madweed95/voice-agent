@@ -1,24 +1,16 @@
 import { Button } from "@/common/components/button";
 import { useEffect } from "react";
 import { useAudioRecorder } from "react-audio-voice-recorder";
-import useWebSocket from "react-use-websocket";
-import recordIcon from "@/assets/record.svg"; // Assuming you have a record icon
+
+import recordIcon from "@/assets/record.svg";
 import { useVoiceMessageStore } from "../store";
 
-export const Recorder = () => {
-  const { sendMessage, readyState, getWebSocket, lastMessage } = useWebSocket(
-    "ws://localhost:8080",
-    {
-      heartbeat: {
-        message: "ping",
-        returnMessage: "pong",
-        timeout: 60000,
-        interval: 25000,
-      },
-    }
-  );
+type Props<T> = {
+  lastMessage: T | null;
+  sendMessage: (message: Blob) => void;
+};
 
-  const messages = useVoiceMessageStore((state) => state.messages);
+export const Recorder = <T,>({ lastMessage, sendMessage }: Props<T>) => {
   const storeMessages = useVoiceMessageStore((state) => state.storeMessages);
 
   const {
@@ -29,31 +21,15 @@ export const Recorder = () => {
     isRecording,
     isPaused,
     recordingTime,
-    mediaRecorder,
   } = useAudioRecorder();
 
-  // const addAudioElement = (blob: Blob | MediaSource | undefined) => {
-  //   if (!blob) return;
-  //   const url = URL.createObjectURL(blob);
-  //   const audio = document.createElement("audio");
-  //   audio.src = url;
-  //   audio.controls = true;
-  //   if (blob instanceof Blob) {
-  //     const wavBlob = new Blob([blob], { type: "audio/wav" });
-  //     sendMessage(wavBlob);
-  //   } else {
-  //     console.warn("Cannot send MediaSource via WebSocket.");
-  //   }
-  // };
-
   useEffect(() => {
-    if (lastMessage?.data instanceof Blob) {
-      console.log("lastMessage", lastMessage?.data);
-      const url = URL.createObjectURL(lastMessage.data);
+    if (lastMessage instanceof Blob) {
+      console.log("lastMessage", lastMessage);
+      const url = URL.createObjectURL(lastMessage);
       const audio = document.createElement("audio");
       audio.src = url;
       audio.controls = true;
-      document.body.appendChild(audio);
       audio.play();
       storeMessages(url);
     }
