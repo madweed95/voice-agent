@@ -3,13 +3,19 @@ import {
   DialogClose,
   DialogContent,
   DialogHeader,
+  DialogTitle,
   DialogTrigger,
 } from "@/common/components/dialog";
 import phoneSvg from "../../../assets/phone.svg";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export const JessicaModal = () => {
   return (
     <Dialog>
+      <VisuallyHidden>
+        <DialogTitle />
+      </VisuallyHidden>
+
       <DialogTrigger className="bg-[#DD86DF] cursor-pointer text-[#1F1B20] hover:bg-[#DD86DF] font-gilroy-medium hover:shadow-xl w-full max-w-[117px] h-11 rounded-[12px]">
         Call Jessica
       </DialogTrigger>
