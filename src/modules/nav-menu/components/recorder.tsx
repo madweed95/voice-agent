@@ -17,17 +17,12 @@ export const Recorder = () => {
   };
 
   return (
-    <div>
-      <AudioRecorder
-        onRecordingComplete={(blob) => addAudioElement(blob)}
-        recorderControls={recorderControls}
-        // downloadOnSavePress={true}
-        // downloadFileExtension="mp3"
-        showVisualizer={true}
-      />
-      <br />
-      <button onClick={recorderControls.stopRecording}>Stop recording</button>
-      <br />
-    </div>
+    <AudioRecorder
+      onRecordingComplete={(blob) => addAudioElement(blob)}
+      recorderControls={recorderControls}
+      downloadOnSavePress={true}
+      downloadFileExtension="wav"
+      showVisualizer={true}
+    />
   );
 };

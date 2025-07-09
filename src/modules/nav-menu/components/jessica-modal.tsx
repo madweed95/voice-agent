@@ -8,6 +8,7 @@ import {
 } from "@/common/components/dialog";
 import phoneSvg from "../../../assets/phone.svg";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { Recorder } from "./recorder";
 
 export const JessicaModal = () => {
   return (
@@ -31,7 +32,9 @@ export const JessicaModal = () => {
             <img src={phoneSvg} alt="phone" className="p-1.5" />
           </DialogClose>
         </DialogHeader>
-        <div className="w-full h-full flex items-center justify-center"></div>
+        <div className="w-full h-full flex items-center justify-center">
+          <Recorder />
+        </div>
       </DialogContent>
     </Dialog>
   );
