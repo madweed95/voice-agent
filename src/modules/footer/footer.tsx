@@ -1,6 +1,6 @@
-import shieldSvg from "../../assets/shield.svg";
-import coinSvg from "../../assets/coin.svg";
-import chartSvg from "../../assets/chart.svg";
+import shieldSvg from "@/assets/shield.svg";
+import coinSvg from "@/assets/coin.svg";
+import chartSvg from "@/assets/chart.svg";
 
 export const Footer = () => {
   return (

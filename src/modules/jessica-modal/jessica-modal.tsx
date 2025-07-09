@@ -6,7 +6,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/common/components/dialog";
-import phoneSvg from "../../assets/phone.svg";
+import phoneSvg from "@/assets/phone.svg";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Recorder } from "./components/recorder";
 
