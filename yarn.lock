@@ -1204,6 +1204,11 @@
     "@types/babel__core" "^7.20.5"
     react-refresh "^0.17.0"
 
+"@wavesurfer/react@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@wavesurfer/react/-/react-1.0.11.tgz#658e3540134a1f40668e1fecc0f2d980830b08ec"
+  integrity sha512-DRpaA3MRTKy4Jby12xvoHASa+w31FZtxaqanXcJjfqNqfamkKi8VJfRnz+Uub9LkpdgoAc3g5SuZF75lEcGgzQ==
+
 acorn-jsx@^5.3.2:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.3.2.tgz#7ed5bb55908b3b2f1bc55c6af1653bada7f07937"
@@ -2321,6 +2326,16 @@ vite@^7.0.3:
     tinyglobby "^0.2.14"
   optionalDependencies:
     fsevents "~2.3.3"
+
+wavesurfer-react@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/wavesurfer-react/-/wavesurfer-react-3.0.4.tgz#018c0c3928c688a5064b487cf8256d5a96c3fce7"
+  integrity sha512-Eq+9ihd28UhX23ZVRrg9llpfo4ejUbYZ8oMEx+XwoymHiwLw44GwYVAo+iUPl9W8aVxuoncBKjbslukvqv0kFw==
+
+wavesurfer.js@^7.9.9:
+  version "7.9.9"
+  resolved "https://registry.yarnpkg.com/wavesurfer.js/-/wavesurfer.js-7.9.9.tgz#e59ff6de9b922699360a10eafbaa14fd838bd2f3"
+  integrity sha512-8O/zu+RC7yjikxiuhsXzRZ8vvjV+Qq4PUKZBQsLLcq6fqbrSF3Vh99l7fT8zeEjKjDBNH2Qxsxq5mRJIuBmM3Q==
 
 webidl-conversions@^3.0.0:
   version "3.0.1"

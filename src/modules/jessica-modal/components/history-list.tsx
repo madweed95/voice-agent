@@ -26,7 +26,7 @@ export const HistoryList = ({ setDisplayHistory }: Props) => {
         <div className="p-4 flex flex-col gap-2">
           {!messages || messages.length === 0 ? (
             <div className="text-[#4F1650] font-gilroy-medium text-sm">
-              "History is not available yet."{" "}
+              History is not available yet.
             </div>
           ) : (
             messages.map((message, index) => (

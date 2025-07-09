@@ -25,7 +25,6 @@ export const Recorder = <T,>({ lastMessage, sendMessage }: Props<T>) => {
 
   useEffect(() => {
     if (lastMessage instanceof Blob) {
-      console.log("lastMessage", lastMessage);
       const url = URL.createObjectURL(lastMessage);
       const audio = document.createElement("audio");
       audio.src = url;
@@ -52,18 +51,18 @@ export const Recorder = <T,>({ lastMessage, sendMessage }: Props<T>) => {
   return isRecording ? (
     <div className="flex items-center gap-2">
       <Button
-        className="w-12 h-12 rounded-full bg-[#DD86DF] hover:bg-[#DD86DF] hover:shadow-xl"
+        className="w-12 h-12 rounded-full bg-[#DD86DF] text-black hover:bg-[#DD86DF] hover:shadow-xl"
         type="button"
         onClick={() => stopRecording()}
       >
-        stop
+        Stop
       </Button>
       <Button
-        className="w-12 h-12 rounded-full bg-[#DD86DF] hover:bg-[#DD86DF] hover:shadow-xl"
+        className="w-12 h-12 rounded-full mr-4 text-black bg-[#DD86DF] hover:bg-[#DD86DF] hover:shadow-xl"
         type="button"
         onClick={() => togglePauseResume()}
       >
-        {isPaused ? "Resume" : "Pause"}
+        {isPaused ? "Play" : "Pause"}
       </Button>
       {recordingTime}
     </div>
