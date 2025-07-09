@@ -2,8 +2,9 @@ import { Button } from "@/common/components/button";
 import { DialogHeader } from "@/common/components/dialog";
 import { ScrollArea } from "@/common/components/scroll-area";
 import { useVoiceMessageStore } from "../store";
-import type { Dispatch, SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import backSvg from "@/assets/back.svg";
+
 type Props = {
   setDisplayHistory: Dispatch<SetStateAction<boolean>>;
 };

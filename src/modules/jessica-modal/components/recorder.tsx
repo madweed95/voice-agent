@@ -4,6 +4,7 @@ import { useAudioRecorder } from "react-audio-voice-recorder";
 
 import recordIcon from "@/assets/record.svg";
 import { useVoiceMessageStore } from "../store";
+import { useMicVAD } from "@ricky0123/vad-react";
 
 type Props<T> = {
   lastMessage: T | null;
@@ -48,6 +49,13 @@ export const Recorder = <T,>({ lastMessage, sendMessage }: Props<T>) => {
     }
   }, [recordingBlob]);
 
+  const vad = useMicVAD({
+    onSpeechEnd: () => {
+      stopRecording();
+    },
+    redemptionFrames: 20,
+  });
+
   return isRecording ? (
     <div className="flex items-center gap-2">
       <Button
@@ -65,6 +73,7 @@ export const Recorder = <T,>({ lastMessage, sendMessage }: Props<T>) => {
         {isPaused ? "Play" : "Pause"}
       </Button>
       {recordingTime}
+      <div>{vad.userSpeaking && "User is speaking"}</div>
     </div>
   ) : (
     <Button
