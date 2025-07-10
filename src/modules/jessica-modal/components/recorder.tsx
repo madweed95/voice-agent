@@ -18,10 +18,8 @@ export const Recorder = <T,>({ lastMessage, sendMessage }: Props<T>) => {
   const {
     startRecording,
     stopRecording,
-    togglePauseResume,
     recordingBlob,
     isRecording,
-    isPaused,
     recordingTime,
   } = useAudioRecorder();
 
