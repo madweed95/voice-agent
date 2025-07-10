@@ -4,7 +4,7 @@ import chartSvg from "@/assets/chart.svg";
 
 export const Footer = () => {
   return (
-    <div className="w-full xl:mt-36 xl:mb-[129px] mb-20 flex items-center justify-between font-gilroy-bold text-[#4F1650]">
+    <div className="w-full xl:mt-36 xl:mb-32 mb-20 flex items-center justify-between font-gilroy-bold text-[#4F1650]">
       <div className="flex items-center gap-2 xl:flex-row flex-col">
         <img src={coinSvg} alt="coin" />
         <div className="text-center">Reduce costs by 40%.</div>

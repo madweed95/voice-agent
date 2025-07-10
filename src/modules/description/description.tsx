@@ -5,7 +5,7 @@ export const Description = () => {
         Solving problems. <br />
         Thousands at a time.
       </h1>
-      <p className="text-[#4F1650] text-[14px] leading-[20px] tracking-[5%] text-sm">
+      <p className="text-[#4F1650] text-sm leading-5 tracking-[5%]">
         It is a long <strong>established fact that a reader</strong> will be
         distracted by the readable content of a page when looking at its layout.
         The point of using Lorem Ipsum is that it has a more-or-less normal
