@@ -2,8 +2,9 @@ import { Button } from "@/common/components/button";
 import { DialogHeader } from "@/common/components/dialog";
 import { ScrollArea } from "@/common/components/scroll-area";
 import { useVoiceMessageStore } from "../store";
-import type { Dispatch, SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import backSvg from "@/assets/back.svg";
+
 type Props = {
   setDisplayHistory: Dispatch<SetStateAction<boolean>>;
 };
@@ -26,7 +27,7 @@ export const HistoryList = ({ setDisplayHistory }: Props) => {
         <div className="p-4 flex flex-col gap-2">
           {!messages || messages.length === 0 ? (
             <div className="text-[#4F1650] font-gilroy-medium text-sm">
-              "History is not available yet."{" "}
+              History is not available yet.
             </div>
           ) : (
             messages.map((message, index) => (

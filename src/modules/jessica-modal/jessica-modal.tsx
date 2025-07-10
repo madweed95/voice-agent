@@ -10,7 +10,7 @@ import phoneSvg from "@/assets/phone.svg";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Recorder } from "./components/recorder";
 import { Button } from "@/common/components/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -19,6 +19,8 @@ import { HistoryList } from "./components/history-list";
 
 export const JessicaModal = () => {
   const [displayHistory, setDisplayHistory] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [lastMsg, setLastMsg] = useState<Blob | null>(null);
 
   const { sendMessage, lastMessage } = useWebSocket(
     "ws://localhost:8080",
@@ -30,11 +32,21 @@ export const JessicaModal = () => {
         interval: 25000,
       },
     },
-    !displayHistory
+    open
   );
 
+  useEffect(() => {
+    setLastMsg(lastMessage?.data ?? null);
+  }, [lastMessage]);
+
   return (
-    <Dialog>
+    <Dialog
+      open={open}
+      onOpenChange={(isOpen) => {
+        setOpen(isOpen);
+        if (!isOpen) setDisplayHistory(false);
+      }}
+    >
       <VisuallyHidden>
         <DialogTitle />
       </VisuallyHidden>
@@ -62,16 +74,16 @@ export const JessicaModal = () => {
               </DialogClose>
             </DialogHeader>
             <div className="w-full h-full flex items-center justify-center px-24">
-              <Recorder
-                lastMessage={lastMessage?.data}
-                sendMessage={sendMessage}
-              />
+              <Recorder lastMessage={lastMsg} sendMessage={sendMessage} />
             </div>
             <div className="flex flex-row items-center justify-center px-6 py-4 w-full">
               <Button
                 variant="outline"
                 className="bg-transparent text-[#4F1650] border-[#DD86DF] rounded-2xl hover:bg-transparent hover:shadow-xl"
-                onClick={() => setDisplayHistory(true)}
+                onClick={() => {
+                  setDisplayHistory(true);
+                  setLastMsg(null);
+                }}
               >
                 See history
               </Button>
