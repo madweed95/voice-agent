@@ -5,6 +5,7 @@ import { useAudioRecorder } from "react-audio-voice-recorder";
 import recordIcon from "@/assets/record.svg";
 import { useVoiceMessageStore } from "../store";
 import { useMicVAD } from "@ricky0123/vad-react";
+import { cn } from "@/common/utils/styles";
 
 type Props<T> = {
   lastMessage: T | null;
@@ -49,39 +50,29 @@ export const Recorder = <T,>({ lastMessage, sendMessage }: Props<T>) => {
     }
   }, [recordingBlob]);
 
-  const vad = useMicVAD({
+  useMicVAD({
     onSpeechEnd: () => {
       stopRecording();
     },
     redemptionFrames: 20,
   });
 
-  return isRecording ? (
-    <div className="flex items-center gap-2">
-      <Button
-        className="w-12 h-12 rounded-full bg-[#DD86DF] text-black hover:bg-[#DD86DF] hover:shadow-xl"
-        type="button"
-        onClick={() => stopRecording()}
-      >
-        Stop
-      </Button>
-      <Button
-        className="w-12 h-12 rounded-full mr-4 text-black bg-[#DD86DF] hover:bg-[#DD86DF] hover:shadow-xl"
-        type="button"
-        onClick={() => togglePauseResume()}
-      >
-        {isPaused ? "Play" : "Pause"}
-      </Button>
-      {recordingTime}
-      <div>{vad.userSpeaking && "User is speaking"}</div>
-    </div>
-  ) : (
+  return (
     <Button
-      className="w-12 h-12 rounded-full bg-[#DD86DF] hover:bg-[#DD86DF] hover:shadow-xl"
+      className={cn(
+        "w-12 h-12 rounded-full bg-[#DD86DF] hover:bg-[#DD86DF] hover:shadow-xl relative"
+      )}
       type="button"
-      onClick={() => startRecording()}
+      onClick={() => (isRecording ? stopRecording() : startRecording())}
     >
-      <img src={recordIcon} alt="record" />
+      {isRecording && (
+        <div className="absolute top-0 right-0 bg-red-600 w-2 h-2 rounded-full animate-ping opacity-75" />
+      )}
+      {isRecording ? (
+        <div className="w-4 h-4 bg-black" />
+      ) : (
+        <img src={recordIcon} alt="record" />
+      )}
     </Button>
   );
 };
