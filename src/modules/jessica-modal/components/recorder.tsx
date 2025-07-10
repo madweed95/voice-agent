@@ -1,19 +1,18 @@
 import { Button } from "@/common/components/button";
 import { useEffect } from "react";
 import { useAudioRecorder } from "react-audio-voice-recorder";
-
+import type { SendMessage } from "react-use-websocket";
 import recordIcon from "@/assets/record.svg";
 import { useVoiceMessageStore } from "../store";
 import { useMicVAD } from "@ricky0123/vad-react";
 import { cn } from "@/common/utils/styles";
 
-type Props<T> = {
-  lastMessage: T | null;
-  sendMessage: (message: Blob) => void;
+type Props = {
+  sendMessage: SendMessage;
 };
 
-export const Recorder = <T,>({ lastMessage, sendMessage }: Props<T>) => {
-  const storeMessages = useVoiceMessageStore((state) => state.storeMessages);
+export const Recorder = ({ sendMessage }: Props) => {
+  const setState = useVoiceMessageStore((state) => state.setState);
 
   const {
     startRecording,
@@ -24,28 +23,11 @@ export const Recorder = <T,>({ lastMessage, sendMessage }: Props<T>) => {
   } = useAudioRecorder();
 
   useEffect(() => {
-    if (lastMessage instanceof Blob) {
-      const url = URL.createObjectURL(lastMessage);
-      const audio = document.createElement("audio");
-      audio.src = url;
-      audio.controls = true;
-      audio.play();
-      storeMessages(url);
-    }
-  }, [lastMessage]);
-
-  useEffect(() => {
     if (!recordingBlob) return;
-    const url = URL.createObjectURL(recordingBlob);
-    const audio = document.createElement("audio");
-    audio.src = url;
-    audio.controls = true;
-    if (recordingBlob instanceof Blob) {
-      const wavBlob = new Blob([recordingBlob], { type: "audio/wav" });
-      sendMessage(wavBlob);
-    } else {
-      console.warn("Cannot send MediaSource via WebSocket.");
-    }
+    if (!(recordingBlob instanceof Blob))
+      alert("Cannot send MediaSource via WebSocket.");
+
+    sendMessage(new Blob([recordingBlob], { type: "audio/wav" }));
   }, [recordingBlob]);
 
   useMicVAD({
@@ -61,7 +43,14 @@ export const Recorder = <T,>({ lastMessage, sendMessage }: Props<T>) => {
         "w-12 h-12 rounded-full bg-[#DD86DF] hover:bg-[#DD86DF] hover:shadow-xl relative"
       )}
       type="button"
-      onClick={() => (isRecording ? stopRecording() : startRecording())}
+      onClick={() => {
+        if (isRecording) {
+          stopRecording();
+        } else {
+          startRecording();
+          setState("recording");
+        }
+      }}
     >
       {isRecording && (
         <div className="absolute top-0 right-0 bg-red-600 w-2 h-2 rounded-full animate-ping opacity-75" />
