@@ -13,6 +13,9 @@ The Jessica voice call modal features:
 - 🗂️ Scrollable message history with smooth UI
 - 📈 Custom waveform audio player with progress gradient
 - 🔴 Pulsing record button that visually responds to speech
+- 🟣 Elegant, animated record/stop button and waveform
+- 🧠 Voice Activity Detection (VAD) auto-stops and resets recording
+- 🗃️ Message history is stored locally as Blobs for robust playback
 - 🔌 WebSocket connection persists while the modal is open, disconnects only when closed
 - 🛠️ All UI/UX and technical issues addressed for a production-ready experience
 
@@ -22,9 +25,11 @@ The Jessica voice call modal features:
 - **🎨 Gradient UI:** Linear-gradient backgrounds for modal and dialog content
 - **🎙️ Voice Activity Detection:** Uses `@ricky0123/vad-react` to auto-stop recording on silence
 - **🔄 WebSocket Audio:** Audio is sent/received as `audio/wav` Blobs over a persistent WebSocket connection
-- **🗂️ Message History:** Scrollable, visually clean message history with overflow handling
-- **📈 Custom Player:** Elegant waveform player with gradient progress
+- **🗂️ Message History:** Scrollable, visually clean message history with robust Blob storage and playback
+- **📈 Custom Player:** Elegant waveform player with gradient progress, using a custom React hook for gradients
 - **🔴 Pulsing Record Button:** Button animates in response to speech (VAD state)
+- **🟣 Elegant Recorder:** Uses WaveSurfer.js RecordPlugin, with React hooks for plugin lifecycle and state
+- **🧠 VAD Integration:** Recording auto-stops and resets on silence
 - **🔌 Connection Management:** WebSocket only connects when modal is open, and resets history view on close
 - **✨ UI/UX Tweaks:** All buttons, modals, and player components styled for a modern, soft look
 
@@ -32,9 +37,11 @@ The Jessica voice call modal features:
 
 - [`@ricky0123/vad-react`](https://www.npmjs.com/package/@ricky0123/vad-react) – Voice Activity Detection
 - [`react-use-websocket`](https://www.npmjs.com/package/react-use-websocket) – WebSocket management
-- [`react-audio-voice-recorder`](https://www.npmjs.com/package/react-audio-voice-recorder) – Audio recording
+- [`wavesurfer.js`](https://wavesurfer.xyz/) – Audio waveform visualization and recording
+- [`@wavesurfer/react`](https://www.npmjs.com/package/@wavesurfer/react) – React bindings for WaveSurfer
 - 🌀 Tailwind CSS – Utility-first styling
 - 🧹 ESLint & Prettier – Linting and formatting
+- Zustand – State management for message history
 
 ## Running the App Locally 🏃‍♂️
 
