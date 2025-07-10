@@ -13,7 +13,7 @@ import { JessicaModal } from "../jessica-modal/jessica-modal";
 export const NavMenu = () => {
   return (
     <>
-      <div className="w-full h-full max-h-[186px] py-[84px] xl:flex hidden items-center justify-between">
+      <div className="w-full h-full max-h-48 py-[84px] xl:flex hidden items-center justify-between">
         <NavigationMenu className="w-full h-full">
           <NavigationMenuList>
             {buttons.map((button) => (
