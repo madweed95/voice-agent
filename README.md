@@ -1,69 +1,63 @@
-# React + TypeScript + Vite
+# Jessica Voice Call Modal – React + TypeScript + Vite 🎤💬
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project implements a custom voice call modal for a virtual assistant (Jessica) using React, TypeScript, and Vite. The modal provides a seamless, interactive voice experience with real-time audio recording, silence detection, and message history.
 
-Currently, two official plugins are available:
+## Solution Overview ✨
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The Jessica voice call modal features:
 
-## Expanding the ESLint configuration
+- 🖋️ Custom font integration (Gilroy, Inter) for a modern look
+- 🎨 Custom-styled modal and buttons with gradients and soft UI effects
+- 🎙️ Audio recording with auto-stop on silence using Voice Activity Detection (VAD)
+- 🔄 Real-time audio send/receive via WebSocket (audio/wav Blobs)
+- 🗂️ Scrollable message history with smooth UI
+- 📈 Custom waveform audio player with progress gradient
+- 🔴 Pulsing record button that visually responds to speech
+- 🔌 WebSocket connection persists while the modal is open, disconnects only when closed
+- 🛠️ All UI/UX and technical issues addressed for a production-ready experience
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Implemented Features 🚀
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **🖋️ Custom Fonts:** Gilroy and Inter loaded via `@font-face` and set as default in CSS
+- **🎨 Gradient UI:** Linear-gradient backgrounds for modal and dialog content
+- **🎙️ Voice Activity Detection:** Uses `@ricky0123/vad-react` to auto-stop recording on silence
+- **🔄 WebSocket Audio:** Audio is sent/received as `audio/wav` Blobs over a persistent WebSocket connection
+- **🗂️ Message History:** Scrollable, visually clean message history with overflow handling
+- **📈 Custom Player:** Elegant waveform player with gradient progress
+- **🔴 Pulsing Record Button:** Button animates in response to speech (VAD state)
+- **🔌 Connection Management:** WebSocket only connects when modal is open, and resets history view on close
+- **✨ UI/UX Tweaks:** All buttons, modals, and player components styled for a modern, soft look
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Additional Libraries/Tools Used 🧩
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- [`@ricky0123/vad-react`](https://www.npmjs.com/package/@ricky0123/vad-react) – Voice Activity Detection
+- [`react-use-websocket`](https://www.npmjs.com/package/react-use-websocket) – WebSocket management
+- [`react-audio-voice-recorder`](https://www.npmjs.com/package/react-audio-voice-recorder) – Audio recording
+- 🌀 Tailwind CSS – Utility-first styling
+- 🧹 ESLint & Prettier – Linting and formatting
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Running the App Locally 🏃‍♂️
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Install dependencies:**
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
+
+2. **Start the development server:**
+
+   ```sh
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+3. **Open your browser:**
+   Visit [http://localhost:5173](http://localhost:5173) to use the app. 🌐
+
+4. **Backend WebSocket:**
+   Ensure your backend WebSocket server is running at `ws://localhost:8080` for full voice call functionality. 🖥️
+
+---
